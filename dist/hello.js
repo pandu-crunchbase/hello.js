@@ -1,4 +1,4 @@
-/*! hellojs-crunchbase v0.1.0 | (c) 2012-2019 Andrew Dodson | MIT https://adodson.com/hello.js/LICENSE */
+/*! hellojs-crunchbase v0.1.1 | (c) 2012-2019 Andrew Dodson | MIT https://adodson.com/hello.js/LICENSE */
 // ES5 Object.create
 if (!Object.create) {
 
