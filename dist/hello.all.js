@@ -1,4 +1,4 @@
-/*! hellojs v1.16.1 | (c) 2012-2017 Andrew Dodson | MIT https://adodson.com/hello.js/LICENSE */
+/*! hellojs-crunchbase v0.1.0 | (c) 2012-2019 Andrew Dodson | MIT https://adodson.com/hello.js/LICENSE */
 // ES5 Object.create
 if (!Object.create) {
 
@@ -4905,7 +4905,7 @@ if (typeof chrome === 'object' && typeof chrome.identity === 'object' && chrome.
 			},
 			scope_delim: ' ',
 
-			base: 'https://api.linkedin.com/v1/',
+			base: 'https://api.linkedin.com/v2/',
 
 			get: {
 				me: 'people/~:(picture-url,first-name,last-name,id,formatted-name,email-address)',
