@@ -15,94 +15,13 @@
 			refresh: true,
 
 			scope: {
-				basic: 'r_basicprofile',
-				email: 'r_emailaddress',
-				files: '',
-				friends: '',
-				photos: '',
-				publish: 'w_share',
-				publish_files: 'w_share',
-				share: '',
-				videos: '',
-				offline_access: ''
+				email: 'r_emailaddress'
 			},
 			scope_delim: ' ',
 
 			base: 'https://api.linkedin.com/v2/',
 
-			get: {
-				me: 'people/~:(picture-url,first-name,last-name,id,formatted-name,email-address)',
-
-				// See: http://developer.linkedin.com/documents/get-network-updates-and-statistics-api
-				'me/share': 'people/~/network/updates?count=@{limit|250}'
-			},
-
-			post: {
-
-				// See: https://developer.linkedin.com/documents/api-requests-json
-				'me/share': function(p, callback) {
-					var data = {
-						visibility: {
-							code: 'anyone'
-						}
-					};
-
-					if (p.data.id) {
-
-						data.attribution = {
-							share: {
-								id: p.data.id
-							}
-						};
-
-					}
-					else {
-						data.comment = p.data.message;
-						if (p.data.picture && p.data.link) {
-							data.content = {
-								'submitted-url': p.data.link,
-								'submitted-image-url': p.data.picture
-							};
-						}
-					}
-
-					p.data = JSON.stringify(data);
-
-					callback('people/~/shares?format=json');
-				},
-
-				'me/like': like
-			},
-
-			del:{
-				'me/like': like
-			},
-
 			wrap: {
-				me: function(o) {
-					formatError(o);
-					formatUser(o);
-					return o;
-				},
-
-				'me/friends': formatFriends,
-				'me/following': formatFriends,
-				'me/followers': formatFriends,
-				'me/share': function(o) {
-					formatError(o);
-					paging(o);
-					if (o.values) {
-						o.data = o.values.map(formatUser);
-						o.data.forEach(function(item) {
-							item.message = item.headline;
-						});
-
-						delete o.values;
-					}
-
-					return o;
-				},
-
 				'default': function(o, headers) {
 					formatError(o);
 					empty(o, headers);
@@ -188,14 +107,6 @@
 			qs.oauth2_access_token = qs.access_token;
 			delete qs.access_token;
 		}
-	}
-
-	function like(p, callback) {
-		p.headers['x-li-format'] = 'json';
-		var id = p.data.id;
-		p.data = (p.method !== 'delete').toString();
-		p.method = 'put';
-		callback('people/~/network/updates/key=' + id + '/is-liked');
 	}
 
 })(hello);
