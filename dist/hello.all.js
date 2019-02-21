@@ -1,4 +1,4 @@
-/*! hellojs-crunchbase v0.1.2 | (c) 2012-2019 Andrew Dodson | MIT https://adodson.com/hello.js/LICENSE */
+/*! hellojs-crunchbase v0.1.3 | (c) 2012-2019 Andrew Dodson | MIT https://adodson.com/hello.js/LICENSE */
 // ES5 Object.create
 if (!Object.create) {
 
@@ -4892,7 +4892,7 @@ if (typeof chrome === 'object' && typeof chrome.identity === 'object' && chrome.
 			refresh: true,
 
 			scope: {
-				lite: 'r_liteprofile',
+				basic: 'r_liteprofile',
 				email: 'r_emailaddress',
 				files: '',
 				friends: '',

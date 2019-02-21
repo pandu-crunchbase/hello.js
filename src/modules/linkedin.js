@@ -15,7 +15,7 @@
 			refresh: true,
 
 			scope: {
-				lite: 'r_liteprofile',
+				basic: 'r_liteprofile',
 				email: 'r_emailaddress',
 				files: '',
 				friends: '',
